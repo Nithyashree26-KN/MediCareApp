@@ -1,0 +1,38 @@
+#!/bin/sh
+# Maven Wrapper script for Linux/Mac (Railway uses Linux)
+set -e
+
+MAVEN_WRAPPER_JAR=".mvn/wrapper/maven-wrapper.jar"
+MAVEN_WRAPPER_PROPERTIES=".mvn/wrapper/maven-wrapper.properties"
+
+# Download Maven if not cached
+if [ ! -f "$MAVEN_WRAPPER_JAR" ]; then
+    DIST_URL=$(grep 'distributionUrl' "$MAVEN_WRAPPER_PROPERTIES" | cut -d'=' -f2-)
+    MAVEN_HOME="$HOME/.m2/wrapper/dists/$(basename "$DIST_URL" .zip)"
+    
+    if [ ! -d "$MAVEN_HOME" ]; then
+        echo "Downloading Maven..."
+        mkdir -p "$MAVEN_HOME"
+        curl -sL "$DIST_URL" -o /tmp/maven.zip
+        unzip -qo /tmp/maven.zip -d "$MAVEN_HOME"
+        rm /tmp/maven.zip
+    fi
+    
+    MAVEN_CMD=$(find "$MAVEN_HOME" -name "mvn" -type f | head -1)
+else
+    MAVEN_CMD="java -jar $MAVEN_WRAPPER_JAR"
+fi
+
+# Find Maven binary
+if [ -z "$MAVEN_CMD" ]; then
+    DIST_URL=$(grep 'distributionUrl' "$MAVEN_WRAPPER_PROPERTIES" | cut -d'=' -f2-)
+    MAVEN_HOME="$HOME/.m2/wrapper/dists/$(basename "$DIST_URL" .zip)"
+    MAVEN_CMD=$(find "$MAVEN_HOME" -name "mvn" -type f 2>/dev/null | head -1)
+fi
+
+if [ -z "$MAVEN_CMD" ]; then
+    echo "Error: Maven not found. Trying system maven..."
+    MAVEN_CMD="mvn"
+fi
+
+exec $MAVEN_CMD "$@"
