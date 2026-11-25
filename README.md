@@ -129,6 +129,7 @@ npm run dev
 
 | Method | Endpoint                       | Description          |
 |--------|--------------------------------|----------------------|
+| GET    | `/`                            | API health check     |
 | GET    | `/api/patients`                | List all patients    |
 | GET    | `/api/patients?ward=ICU`       | Filter by ward       |
 | GET    | `/api/patients?department=...` | Filter by department |
