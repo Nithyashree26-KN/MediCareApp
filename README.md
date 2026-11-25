@@ -17,7 +17,7 @@ A full-stack web application for hospital staff to manage admitted patients. Bui
 | Layer      | Technology                        |
 |------------|-----------------------------------|
 | Frontend   | React.js (Vite)                   |
-| Backend    | Java 17, Spring Boot 3.2          |
+| Backend    | Java , Spring Boot 3.2          |
 | Database   | MySQL (local) / MySQL (Railway)   |
 | ORM        | Spring Data JPA / Hibernate       |
 | Validation | Bean Validation (javax.validation)|
