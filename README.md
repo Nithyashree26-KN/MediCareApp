@@ -147,11 +147,17 @@ npm run dev
 ### Patient List View
 The main dashboard shows all admitted patients in a responsive table with status badges, search, and filter options.
 
+![Patient list with search and filters](docs/screenshots/patient-list.png)
+
 ### Add/Edit Patient Form
 A modal form with real-time validation for all 8 fields including dropdown selections.
 
+![Add patient form](docs/screenshots/add-patient-form.png)
+
 ### Delete Confirmation
 A confirmation dialog appears before deleting any patient record.
+
+![Delete confirmation dialog](docs/screenshots/delete-confirmation.png)
 
 ---
 
