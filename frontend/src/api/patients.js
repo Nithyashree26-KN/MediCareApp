@@ -1,7 +1,10 @@
 import axios from 'axios';
 
-// Uses Vite proxy: /api → http://localhost:8080
-const BASE_URL = '/api/patients';
+// Production: Railway backend | Development: localhost proxy
+const API_HOST = import.meta.env.PROD
+  ? 'https://medicareapp-production.up.railway.app'
+  : '';
+const BASE_URL = `${API_HOST}/api/patients`;
 
 const api = axios.create({
   baseURL: BASE_URL,

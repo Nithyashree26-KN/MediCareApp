@@ -12,8 +12,10 @@ public class CorsConfig implements WebMvcConfigurer {
         registry.addMapping("/api/**")
                 .allowedOrigins(
                     "http://localhost:5173",   // Vite dev server
-                    "http://localhost:3000"    // Alternate React port
+                    "http://localhost:3000",   // Alternate React port
+                    "https://*.vercel.app"     // Vercel production
                 )
+                .allowedOriginPatterns("https://*.vercel.app")
                 .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
